@@ -4,6 +4,7 @@ import sys
 import random
 import requests
 from os import getenv
+from dotenv import load_dotenv
 
 from datetime import datetime
 from aiogram import Bot, Dispatcher, Router, html, F
@@ -64,9 +65,11 @@ used_facts = []
 # Количество попыток, после которых факты могут повторяться
 max_attempts = 11
 
+# Загрузка переменных из файла .env
+load_dotenv()
 
 # Bot token can be obtained via https://t.me/BotFather
-TOKEN = "7931774402:AAGNp5Xtr1YSV1bM8jfzwBmM8YmJZZGRh0U"
+TOKEN = getenv("TOKEN_BOT")
 
 if not TOKEN:
     raise ValueError("Bot token not provided. Please set the BOT_TOKEN environment variable.")
